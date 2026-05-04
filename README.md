@@ -1,16 +1,47 @@
-# React + Vite
+# GBU English Academy – Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Landing page estilo **link-in-bio** para [GBU English Academy](https://gbuenglishacademy.com), construida con React + Vite y desplegada en Netlify.
 
-Currently, two official plugins are available:
+## Requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js `^20.19.0` o `>=22.12.0`
+- npm `>=9`
 
-## React Compiler
+## Desarrollo local
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+Abre http://localhost:5173 en tu navegador.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Build de producción
+
+```bash
+npm run build      # genera la carpeta dist/
+npm run preview    # previsualiza el build localmente
+```
+
+## Deploy en Netlify
+
+El proyecto incluye `netlify.toml` listo para usar. Solo conecta el repositorio en Netlify y el deploy se realizará automáticamente con cada push a `main`.
+
+- **Comando de build**: `npm run build`
+- **Directorio de publicación**: `dist`
+
+## Estructura
+
+```
+├── index.html
+├── netlify.toml
+├── src/
+│   ├── App.jsx        # Componente principal (links, perfil, redes)
+│   ├── App.css        # Estilos de la landing page
+│   ├── index.css      # Reset global
+│   ├── main.jsx       # Punto de entrada React
+│   └── assets/        # Imágenes y recursos
+└── public/
+    ├── favicon.svg
+    └── icons.svg
+```

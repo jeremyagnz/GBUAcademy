@@ -1,9 +1,10 @@
 import './App.css'
+import profilePhoto from './assets/hero.png'
 
 const links = [
   {
     id: 'whatsapp',
-    href: 'https://wa.me/message/GBU_WHATSAPP',
+    href: 'https://wa.me/gbuenglishacademy',
     label: 'Contáctanos por WhatsApp',
     sublabel: 'Resuelve tus dudas con nosotros',
     icon: (
@@ -130,7 +131,7 @@ const socials = [
   },
   {
     id: 'whatsapp-social',
-    href: 'https://wa.me/message/GBU_WHATSAPP',
+    href: 'https://wa.me/gbuenglishacademy',
     label: 'WhatsApp',
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -147,9 +148,11 @@ function App() {
         {/* Profile */}
         <section className="profile">
           <div className="avatar-wrapper">
-            <div className="avatar" aria-hidden="true">
-              <span className="avatar-initials">GBU</span>
-            </div>
+            <img
+              src={profilePhoto}
+              alt="GBU English Academy"
+              className="avatar"
+            />
             <span className="avatar-badge" aria-hidden="true">🇺🇸</span>
           </div>
           <h1 className="profile-name">GBU English Academy</h1>
