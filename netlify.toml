@@ -1,0 +1,58 @@
+# ──────────────────────────────────────────────
+# GBUAcademy – Netlify Configuration
+# ──────────────────────────────────────────────
+
+# ── Build settings ────────────────────────────
+[build]
+  # Command used to build the project
+  command = "npm run build"
+  # Directory that contains the built output to deploy
+  publish = "dist"
+  # Directory where Netlify installs dependencies
+  # (defaults to the repo root; set if your app lives in a sub-folder)
+  # base = "."
+
+# ── Production context (branch: main) ─────────
+[context.production]
+  command = "npm run build"
+  publish = "dist"
+
+# ── Deploy Preview context ─────────────────────
+# Runs for every Pull Request opened against the repo.
+# Each PR gets its own isolated preview URL:
+#   https://deploy-preview-<PR_NUMBER>--<SITE_NAME>.netlify.app
+[context.deploy-preview]
+  command = "npm run build"
+  publish = "dist"
+
+# ── Branch Deploy context ──────────────────────
+# Runs for every push to a branch that is NOT main and NOT a PR.
+# URL pattern: https://<BRANCH-NAME>--<SITE_NAME>.netlify.app
+[context.branch-deploy]
+  command = "npm run build"
+  publish = "dist"
+
+# ── Redirect rules ─────────────────────────────
+# Single-page application (SPA) catch-all redirect.
+# Routes all requests that don't match a static file back to index.html
+# so that client-side routing works correctly.
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
+
+# ── HTTP headers ───────────────────────────────
+# Apply security and caching headers to all responses.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
+    Permissions-Policy     = "camera=(), microphone=(), geolocation=()"
+
+# Cache immutable assets (hashed filenames) aggressively.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
